@@ -1,0 +1,13 @@
+.popup__tooltip-message {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.21;
+  font-weight: 900;
+  text-align: center;
+}
+
+@media (max-width: 1280px) {
+  .popup__tooltip-message {
+    font-size: calc((5vw + 224px)/12);
+  }
+}

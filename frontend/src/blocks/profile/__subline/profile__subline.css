@@ -1,0 +1,27 @@
+.profile__subline {
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.21;
+  font-size: 18px;
+  font-weight: 400;
+  grid-column: 1 / 3;
+  grid-row: 2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 1280px) {
+  .profile__subline {
+    font-size: calc((5vw + 152px)/12);
+    max-width: calc((9215vw - 18496px)/192);
+  }
+}
+
+@media (max-width: 767px) {
+  .profile__subline {
+    max-width: calc((185vw + 56px)/3);
+    justify-self: center;
+    grid-column: 1;
+  }
+}

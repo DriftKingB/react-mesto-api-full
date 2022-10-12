@@ -1,0 +1,12 @@
+.popup__container {
+  position: absolute;
+  top: calc(50vh - 165px);
+  left: calc(50vw - 215px);
+}
+
+@media (max-width: 1280px) {
+  .popup__container {
+    top: calc((600vh - 5vw - 1916px)/12);
+    left: calc((1015vw - 2792px)/24);
+  }
+}

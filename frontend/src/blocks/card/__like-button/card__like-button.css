@@ -1,0 +1,17 @@
+.card__like-button {
+  margin-top: 2px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/album/album__like-button_disabled.svg);
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+

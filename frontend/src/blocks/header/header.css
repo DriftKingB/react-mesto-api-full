@@ -1,0 +1,16 @@
+.header {
+  margin: 45px auto 0;
+  width: 880px;
+  height: 74px;
+  border-bottom: 1px rgba(84, 84, 84, 0.7) solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (max-width: 1280px) {
+  .header {
+    margin-top: calc((85vw + 1072px)/48);
+    width: calc((175vw + 400px)/3);
+  }
+}

@@ -1,0 +1,18 @@
+.popup__tooltip {
+  padding: 60px 36px;
+  color: #000;
+  background-color: #fff;
+  width: 430px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1280px) {
+  .popup__tooltip {    
+    padding: calc((25vw + 1120px)/24) calc((15vw + 96px)/8);
+    width: calc((185vw + 2792px)/12);
+  }
+}

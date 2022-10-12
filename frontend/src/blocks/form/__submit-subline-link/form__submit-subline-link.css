@@ -1,0 +1,14 @@
+.form__submit-subline-link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.21;
+  font-weight: 400;
+  color: #fff;
+  margin-left: 5px;
+  transition: opacity 0.3s;
+}
+
+.form__submit-subline-link:hover {
+  opacity: 0.6;
+}

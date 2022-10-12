@@ -1,0 +1,11 @@
+@media (max-width: 1280px) {
+  .header__link_type_auth {
+    font-size: calc((5vw + 152px)/12);
+  }
+}
+
+@media (max-width: 768px) {
+  .header__link_type_auth {
+    margin-right: calc((-675vw + 5184px)/112);
+  }
+}

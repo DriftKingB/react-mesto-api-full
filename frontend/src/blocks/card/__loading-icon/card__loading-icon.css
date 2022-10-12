@@ -1,0 +1,9 @@
+.card__loading-icon {
+  position: absolute;
+  top: 25px;
+  width: 15px;
+  height: 15px;
+  background-image: url('../../../images/album/album__loading-icon.gif');
+  background-size: cover;
+  display: none;
+}

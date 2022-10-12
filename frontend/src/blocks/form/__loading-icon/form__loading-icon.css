@@ -1,0 +1,19 @@
+.form__loading-icon {
+  display: none;
+}
+
+.form__loading-icon:after {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  overflow: hidden;
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026";
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 17px;
+  }
+}

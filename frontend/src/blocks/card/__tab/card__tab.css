@@ -1,0 +1,9 @@
+.card__tab {
+  padding: 0 20px 6px 21px;
+  height: 79px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-sizing: border-box;
+}

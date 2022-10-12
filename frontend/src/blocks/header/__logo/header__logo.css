@@ -1,0 +1,20 @@
+.header__logo {
+  margin: 0;
+  width: 142px;
+  height: calc((3800vw + 87347px)/4128);
+  background-image: url(../../../images/header__logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1280px) {
+  .header__logo {
+    width: calc((3800vw + 87347px)/960);
+  }
+}
+
+@media (max-width: 768px) {
+  .header__logo {
+    margin-left: calc((-675vw + 5184px)/112);
+  }
+}

@@ -1,0 +1,6 @@
+.card__image-container {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 100%;
+  cursor: pointer;
+}

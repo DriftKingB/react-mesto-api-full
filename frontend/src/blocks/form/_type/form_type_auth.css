@@ -1,0 +1,14 @@
+.form_type_auth {
+  width: 430px;
+  margin: 60px auto 80px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+}
+
+@media (max-width: 1280px) {
+  .form_type_auth {
+    margin: calc((25vw + 400px)/12) auto calc((25vw + 160px)/6);
+    width: calc((425vw + 4870px)/24);
+  }
+}
