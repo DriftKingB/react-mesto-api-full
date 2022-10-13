@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
@@ -11,7 +12,6 @@ const signup = require('./routes/signup');
 
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { corsChecker } = require('./middlewares/corsChecker');
 const NotFoundError = require('./errors/NotFoundError');
 const { customErrorHandler } = require('./middlewares/errorHandlers');
 
@@ -28,7 +28,7 @@ app.listen(PORT, console.log(`Server listening on port: ${PORT}`));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(corsChecker);
+app.use(cors());
 
 app.use('/signin', login);
 app.use('/signup', signup);
