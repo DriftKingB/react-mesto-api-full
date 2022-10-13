@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
 function handleLogin(req, res, next) {
-  console.log(req.body);
   const { email, password } = req.body;
   User.findByCredentials(email, password)
     .then((user) => {
@@ -10,6 +9,7 @@ function handleLogin(req, res, next) {
 
       res
         .cookie('jwt', token, {
+          secure: true,
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7, // 7d
           sameSite: true,
