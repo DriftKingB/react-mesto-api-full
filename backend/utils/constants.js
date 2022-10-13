@@ -1,7 +1,7 @@
 const urlRegEx = /^https?:\/\/[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
 
 const allowedCors = [
-  'localhost:3000',
+  'http://localhost:3000',
   'https://domesto.students.nomoredomains.icu',
 ];
 
