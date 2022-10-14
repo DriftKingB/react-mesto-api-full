@@ -7,4 +7,13 @@ const allowedCors = [
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-module.exports = { urlRegEx, allowedCors, DEFAULT_ALLOWED_METHODS };
+const corsConfig = {
+  origin: 'localhost:3000',
+};
+
+module.exports = {
+  urlRegEx,
+  allowedCors,
+  DEFAULT_ALLOWED_METHODS,
+  corsConfig,
+};

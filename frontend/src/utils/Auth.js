@@ -24,6 +24,7 @@ class Auth {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({ email, password }),
+      credentials: 'include',
     })
       .then(this._checkResponse);
   }

@@ -14,6 +14,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/NotFoundError');
 const { customErrorHandler } = require('./middlewares/errorHandlers');
+const { corsConfig } = require('./utils/constants');
 
 const { PORT = 3000 } = process.env;
 
@@ -28,7 +29,7 @@ app.listen(PORT, console.log(`Server listening on port: ${PORT}`));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(cors());
+app.use(cors(corsConfig));
 
 app.use('/signin', login);
 app.use('/signup', signup);
