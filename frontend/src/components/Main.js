@@ -6,7 +6,7 @@ export default function Main({ onEditProfile, onAddPlace, onEditAvatar, cards, o
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <div className="content"> 
+    <div className="content">
       <section className="profile">
         <div className="profile__avatar" style={{ backgroundImage: `url(${currentUser.avatar})` }}>
           <button className="profile__avatar-button" onClick={onEditAvatar} />
@@ -20,11 +20,11 @@ export default function Main({ onEditProfile, onAddPlace, onEditAvatar, cards, o
       </section>
 
       <section className="album">
-        {cards.map((card) => 
-          <Card 
-            key={card._id} 
-            card={card} 
-            onCardClick={onCardClick} 
+        {cards.map((card) =>
+          <Card
+            key={card._id}
+            card={card}
+            onCardClick={onCardClick}
             onCardLike={onCardLike}
             onCardRemoval={onCardRemoval}
           />

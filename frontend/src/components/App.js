@@ -20,16 +20,16 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentUserEmail, setCurrentUserEmail] = useState('');
   const [cards, setCards] = useState([]);
-  console.log(authToken);
+
   useEffect(() => {
     authToken && auth.checkToken(authToken)
       .then(res => setCurrentUserEmail(res.data.email))
       .catch(err => console.log(err));
     api.getUserInfo()
-      .then(data => setCurrentUser(data))
+      .then(({ data }) => setCurrentUser(data))
       .catch(err => console.log(err));
     api.getCohortCards()
-      .then(cardList => setCards(cardList))
+      .then(({ data }) => setCards(data))
       .catch(err => console.log(err));
   }, [authToken])
 
@@ -44,8 +44,8 @@ export default function App() {
   function handleLoginSubmit(loadingFunc, popupState, requestState, inputs) {
     loadingFunc(true);
     auth.login(inputs.email.value, inputs.password.value)
-      .then((data) => {
-        handleSignIn(data.token);
+      .then(({ data }) => {
+        handleSignIn(data);
         requestState(true);
       })
       .catch((err) => {
@@ -71,13 +71,14 @@ export default function App() {
   }
 
   function handleCardLike(card, loadingFunc) {
-    const likedByUser = card.likes.some(user => user._id === currentUser._id );
+    const likedByUser = card.likes.some(userId => userId === currentUser._id );
+
     const request = !likedByUser ? api.putCardLike(card._id) : api.removeCardLike(card._id);
 
     loadingFunc(true);
     request
-      .then(res => {
-        setCards(cards.map((cardItem) => res._id === cardItem._id ? res : cardItem));
+      .then(({ data }) => {
+        setCards(cards.map((cardItem) => data._id === cardItem._id ? data : cardItem));
       })
       .catch(err => console.log(err))
       .finally(() => loadingFunc(false));
@@ -97,8 +98,8 @@ export default function App() {
   function handleAddPlace(name, link, loadingFunc, closePopups) {
     loadingFunc(true);
     api.postSectionItem(name, link)
-      .then(res => {
-        setCards([res, ...cards]);
+      .then(({ data }) => {
+        setCards([data, ...cards]);
         closePopups();
       })
       .catch(err => console.log(err))
@@ -108,8 +109,8 @@ export default function App() {
   function handleEditProfile(name, about, loadingFunc, closePopups) {
     loadingFunc(true);
     api.patchUserInfo(name, about)
-      .then(res => {
-        setCurrentUser(res);
+      .then(({ data }) => {
+        setCurrentUser(data);
         closePopups();
       })
       .catch(err => console.log(err))
@@ -119,8 +120,8 @@ export default function App() {
   function handleEditAvatar(link, loadingFunc, closePopups) {
     loadingFunc(true);
     api.patchUserAvatar(link)
-      .then(res => {
-        setCurrentUser(res);
+      .then(({ data }) => {
+        setCurrentUser(data);
         closePopups();
       })
       .catch(err => console.log(err))

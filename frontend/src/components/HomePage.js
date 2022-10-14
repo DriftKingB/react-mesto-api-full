@@ -27,11 +27,11 @@ export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLik
   function handleEditAvatarClick() {
     setAvatarPopupState(true);
   }
-  
+
   function handleEditProfileClick() {
     setProfilePopupState(true);
   }
-  
+
   function handleAddPlaceClick() {
     setCardPopupState(true);
   }
@@ -75,21 +75,21 @@ export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLik
     <>
 			{
         currentUserEmail &&
-        <Header 
+        <Header
           userEmail={ <p className="header__user-email ">{currentUserEmail}</p> }
-          redirectLink={ 
-            <Link 
-              className="header__link header__link_type_home" 
-              to="sign-in" 
+          redirectLink={
+            <Link
+              className="header__link header__link_type_home"
+              to="sign-in"
               onClick={onSignOut}
-            > Выйти 
+            > Выйти
             </Link> }
         />
       }
-      { 
+      {
         (currentUser && cards) &&
-        <Main 
-          onEditProfile={handleEditProfileClick} 
+        <Main
+          onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
           onCardRemoval={handleRemoveCardClick}
@@ -98,29 +98,29 @@ export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLik
           onCardLike={onCardLike}
         />
       }
-      <ImagePopup 
+      <ImagePopup
         isOpen={isImagePopupOpen}
         isLoading={popupIsLoading}
         onClose={closeAllPopups}
         card={selectedCard}
       />
-      <AddPlacePopup 
+      <AddPlacePopup
         isOpen={isAddPlacePopupOpen}
         isLoading={popupIsLoading}
         onClose={closeAllPopups}
         onSubmit={handleAddPlace}
       />
-      <RemoveCardPopup 
+      <RemoveCardPopup
         isLoading={popupIsLoading}
         onClose={closeAllPopups}
-        onSubmit={handleCardRemove} 
+        onSubmit={handleCardRemove}
         card={cardToRemove}
       />
 
       {
         currentUser &&
         <>
-          <EditAvatarPopup 
+          <EditAvatarPopup
             isLoading={popupIsLoading}
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
@@ -128,12 +128,12 @@ export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLik
           />
           <EditProfilePopup
             isLoading={popupIsLoading}
-            isOpen={isEditPopupOpen} 
+            isOpen={isEditPopupOpen}
             onClose={closeAllPopups}
-            onSubmit={handleEditProfile} 
+            onSubmit={handleEditProfile}
           />
         </>
-      }      
+      }
 			<Footer />
     </>
 	)
