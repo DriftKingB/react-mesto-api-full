@@ -20,7 +20,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [currentUserEmail, setCurrentUserEmail] = useState('');
   const [cards, setCards] = useState([]);
-
+  console.log(authToken);
   useEffect(() => {
     authToken && auth.checkToken(authToken)
       .then(res => setCurrentUserEmail(res.data.email))
@@ -34,11 +34,11 @@ export default function App() {
   }, [authToken])
 
   function handleSignIn(token) {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
   }
 
   function handleSignOut() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
   }
 
   function handleLoginSubmit(loadingFunc, popupState, requestState, inputs) {

@@ -9,7 +9,6 @@ function handleLogin(req, res, next) {
 
       res
         .cookie('jwt', token, {
-          secure: true,
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7, // 7d
           sameSite: true,

@@ -1,7 +1,7 @@
 export const apiConfig = {
   baseUrl: 'https://api.domesto.students.nomoredomains.icu',
   headers: {
-    authorization: 'f438dcb5-8fef-4aba-b8aa-e100fa71cd0a',
+    authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQ3ZTA1NjY0ZTllYzdjMWEyZGNmMTEiLCJpYXQiOjE2NjU2NzUyMzksImV4cCI6MTY2NjI4MDAzOX0.Dh1OWWTy6qocgaq7YSeANO72njKxf_NIlh1cn3vVgYw',
     'Content-Type': 'application/json',
   },
 };
