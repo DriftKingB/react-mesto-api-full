@@ -16,29 +16,25 @@ import ProtectedRoute from './ProtectedRoute';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function App() {
-  const authToken = localStorage.getItem('token');
+  const [authToken, setAuthToken] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const [currentUserEmail, setCurrentUserEmail] = useState('');
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    authToken && auth.checkToken(authToken)
-      .then(res => setCurrentUserEmail(res.data.email))
-      .catch(err => console.log(err));
-    api.getUserInfo()
+    authToken && api.getUserInfo()
       .then(({ data }) => setCurrentUser(data))
       .catch(err => console.log(err));
-    api.getCohortCards()
+    authToken && api.getCards()
       .then(({ data }) => setCards(data))
       .catch(err => console.log(err));
   }, [authToken])
 
   function handleSignIn(token) {
-    localStorage.setItem('token', token);
+    setAuthToken(token);
   }
 
   function handleSignOut() {
-    localStorage.removeItem('token');
+    setAuthToken(null);
   }
 
   function handleLoginSubmit(loadingFunc, popupState, requestState, inputs) {
@@ -138,7 +134,6 @@ export default function App() {
             component={HomePage}
             exact
             path='/'
-            currentUserEmail={currentUserEmail}
             cards={cards}
             onCardLike={handleCardLike}
             onCardRemove={handleCardRemove}

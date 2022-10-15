@@ -1,4 +1,4 @@
-import { authConfig } from './constants';
+import { apiConfig } from './constants';
 
 class Auth {
   constructor({ baseUrl, headers }) {
@@ -9,7 +9,7 @@ class Auth {
   _checkResponse(res) {
     return res.json()
       .then(data => {
-        return (res.ok) ? Promise.resolve(data) : Promise.reject(`Ошибка ${res.status}: ${data.message}`);
+        return (res.ok) ? Promise.resolve(data) : Promise.reject(`Ошибка ${res.status} - ${data.message}`);
       });
   }
 
@@ -26,22 +26,11 @@ class Auth {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({ email, password }),
-      credentials: 'include',
-    })
-      .then(this._checkResponse);
-  }
-
-  checkToken(token) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET',
-      headers: {
-        ...this._headers,
-        Authorization: `Bearer ${token}`,
-      },
     })
       .then(this._checkResponse);
   }
 }
 
-export default new Auth(authConfig);
+export default new Auth(apiConfig);

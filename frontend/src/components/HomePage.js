@@ -12,7 +12,7 @@ import EditAvatarPopup from './Popups/EditAvatarPopup';
 import RemoveCardPopup from './Popups/RemoveCardPopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLike, onCardRemove, onAddPlace, onEditProfile, onEditAvatar }) {
+export default function HomePage({ onSignOut, cards, onCardLike, onCardRemove, onAddPlace, onEditProfile, onEditAvatar }) {
 	const currentUser = useContext(CurrentUserContext);
 
   const [isEditPopupOpen, setProfilePopupState] = useState(false);
@@ -74,14 +74,14 @@ export default function HomePage({ onSignOut, currentUserEmail, cards, onCardLik
 	return(
     <>
 			{
-        currentUserEmail &&
+        currentUser &&
         <Header
-          userEmail={ <p className="header__user-email ">{currentUserEmail}</p> }
+          userEmail={ <p className="header__user-email ">{ currentUser.email }</p> }
           redirectLink={
             <Link
               className="header__link header__link_type_home"
               to="sign-in"
-              onClick={onSignOut}
+              onClick={ onSignOut }
             > Выйти
             </Link> }
         />

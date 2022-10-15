@@ -23,14 +23,14 @@ export default function Register({ onSubmit }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    
+
     onSubmit(setIsLoading, setPopupState, setRequestState, inputs, history);
   }
 
   return(
     <>
       { (isRequestSucceeded && !isPopupOpen) && <Redirect to='/sign-in' />}
-      <Header 
+      <Header
         redirectLink={
           <Link className="header__link header__link_type_auth" to="sign-in">Войти</Link>
         }
@@ -41,8 +41,8 @@ export default function Register({ onSubmit }) {
         isLoading={isLoading}
         isValid={isValid}
         inputs={inputs}
-        name="register" 
-        title="Регистрация" 
+        name="register"
+        title="Регистрация"
         submitText="Зарегистрироваться"
         loadingSubmitText="Регистрация"
         submitSubline={
@@ -55,36 +55,36 @@ export default function Register({ onSubmit }) {
           <fieldset className="form__input-container form__input-container_type_auth">
             <div className="form__field">
               <input
-                className={`form__input form__input_type_auth ${!(inputs.email?.isValid ?? true) ? 'form__input_invalid' : ''}`} 
-                name="email" 
-                id="email-input" 
-                type="email" 
-                placeholder="Email" 
-                required 
-                onChange={handleChange} 
-                value={inputs.email?.value} 
+                className={`form__input form__input_type_auth ${!(inputs.email?.isValid ?? true) ? 'form__input_invalid' : ''}`}
+                name="email"
+                id="email-input"
+                type="email"
+                placeholder="Email"
+                required
+                onChange={handleChange}
+                value={inputs.email?.value}
               />
               <span className="form__input-error"> { inputs.email?.errorMessage } </span>
             </div>
             <div className="form__field">
-              <input 
-                className={`form__input form__input_type_auth ${!(inputs.password?.isValid ?? true) ? 'form__input_invalid' : ''}`} 
-                name="password" 
-                id="password-input" 
-                type="password" 
-                placeholder="Пароль" 
+              <input
+                className={`form__input form__input_type_auth ${!(inputs.password?.isValid ?? true) ? 'form__input_invalid' : ''}`}
+                name="password"
+                id="password-input"
+                type="password"
+                placeholder="Пароль"
                 required
-                minLength="2" 
-                maxLength="30" 
-                onChange={handleChange} 
-                value={inputs.password?.value} 
+                minLength="2"
+                maxLength="30"
+                onChange={handleChange}
+                value={inputs.password?.value}
               />
               <span className="form__input-error"> { inputs.password?.errorMessage } </span>
             </div>
           </fieldset>
-        } 
+        }
       />
-      <InfoToolTipPopup 
+      <InfoToolTipPopup
         isOpen={isPopupOpen}
         onClose={closePopup}
         isSucceeded={isRequestSucceeded}

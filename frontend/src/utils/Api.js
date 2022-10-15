@@ -9,14 +9,15 @@ class Api {
   _checkResponse(res) {
     return res.json()
       .then(data => {
-        return (res.ok) ? Promise.resolve(data) : Promise.reject(`Ошибка ${res.status}: ${data.message}`);
+        return (res.ok) ? Promise.resolve(data) : Promise.reject(`Ошибка ${res.status} - ${data.message}`);
       });
   }
 
-  getCohortCards() {
+  getCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -25,6 +26,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({
         name: cardName,
         link: cardLink,
@@ -37,6 +39,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -45,6 +48,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -53,6 +57,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -61,6 +66,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -69,6 +75,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({
         name: userName,
         about: userAbout,
@@ -81,6 +88,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({
         avatar: avatarLink,
       }),
