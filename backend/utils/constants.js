@@ -12,6 +12,7 @@ const corsConfig = {
     'http://localhost:3000',
     'https://domesto.students.nomoredomains.icu',
   ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
 
