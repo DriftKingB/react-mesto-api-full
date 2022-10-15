@@ -1,9 +1,9 @@
 import { Redirect, Route } from "react-router"
 
-export default function ProtectedRoute({ component: Component, authToken, path, ...props }) {
+export default function ProtectedRoute({ component: Component, tokenIsPresent, path, ...props }) {
   return(
     <Route path={path}>
-      { authToken ? <Component {...props} /> : <Redirect to='/sign-in' /> }
+      { tokenIsPresent ? <Component {...props} /> : <Redirect to='/sign-in' /> }
     </Route>
   )
 }
