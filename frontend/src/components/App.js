@@ -16,26 +16,32 @@ import ProtectedRoute from './ProtectedRoute';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function App() {
-  const [tokenIsPresent, setTokenState] = useState(localStorage.getItem('tokenIsPresent'));
+  const [tokenIsValid, setTokenState] = useState(localStorage.getItem('tokenIsValid'));
   const [currentUser, setCurrentUser] = useState(null);
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    tokenIsPresent && api.getUserInfo()
+    tokenIsValid && api.getUserInfo()
       .then(({ data }) => setCurrentUser(data))
-      .catch(err => console.log(err));
-    tokenIsPresent && api.getCards()
+      .catch(err => {
+        console.log(err);
+        handleSignOut();
+      });
+    tokenIsValid && api.getCards()
       .then(({ data }) => setCards(data))
-      .catch(err => console.log(err));
-  }, [tokenIsPresent])
+      .catch(err => {
+        console.log(err);
+        handleSignOut();
+      });
+  }, [tokenIsValid])
 
   function handleSignIn() {
-    localStorage.setItem('tokenIsPresent', true);
+    localStorage.setItem('tokenIsValid', true);
     setTokenState(true);
   }
 
   function handleSignOut() {
-    localStorage.setItem('tokenIsPresent', false);
+    localStorage.setItem('tokenIsValid', false);
     setTokenState(false);
   }
 
@@ -131,7 +137,7 @@ export default function App() {
       <Router>
         <Switch>
           <ProtectedRoute
-            tokenIsPresent={tokenIsPresent}
+            tokenIsValid={tokenIsValid}
             onSignOut={handleSignOut}
             component={HomePage}
             exact
